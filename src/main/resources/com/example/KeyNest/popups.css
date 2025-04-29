@@ -1,0 +1,116 @@
+/* Popups */
+
+.root{
+    -fx-background-color:  #393351;
+    background-color:  #393351;
+}
+
+/* Label */
+.label{
+    -fx-text-fill: #e1e1e1;
+}
+
+/* Pane */
+.pane-grid{
+    -fx-background-color: #2D2D30;
+    background-color: #2D2D30;
+}
+
+/* GridPane */
+.tab-pane-grid{
+    /*
+     * GridPane gridPane = new GridPane();
+     * gridPane.getStyleClass().add("tab-pane-grid");
+     * gridPane.setPadding(new Insets(3,0,0,0));
+    */
+    -fx-background-color: #2D2D30;
+    background-color: #2D2D30;
+    -fx-background-insets: 3 0 0 0;
+}
+
+/* TextArea */
+.text-area{
+    -fx-background-radius: 0;
+    -fx-border-width: 1;
+    border-width: 1;
+    -fx-border-color: #222222;
+    border-color: #222222;
+    -fx-text-fill: #AFB1B3;
+    -fx-highlight-fill: #4e4e4e;
+    -fx-background-color: #1A1A1A;
+    background-color: #1A1A1A;
+}
+.text-area:hover{
+    -fx-border-color: #3E3E40;
+    border-color: #3E3E40;
+}
+.text-area:focused{
+    -fx-border-color: #4e4e4e;
+    border-color: #4e4e4e;
+    -fx-background-color: #1A1A1A;
+    background-color: #1A1A1A;
+}
+.text-area .content{
+    -fx-background-radius: 0;
+    -fx-border-width: 0;
+    border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: #1A1A1A;
+    background-color: #1A1A1A;
+}
+.text-area .scroll-bar{
+    -fx-background-insets: 0 -0.5 0.5 0;
+}
+.text-area .scroll-bar .thumb{
+    -fx-background-insets: 0 2 0 2;
+}
+
+/* TextField */
+.text-field{
+    -fx-background-radius: 0;
+    -fx-border-width: 1;
+    border-width: 1;
+    -fx-border-color: #222222;
+    border-color: #4e4e4e;
+    -fx-background-color: #2F2B43;
+    background-color: #2F2B43;
+    -fx-text-fill: #e1e1e1;
+    -fx-highlight-fill: #4e4e4e;
+    -fx-min-height: 25;
+    min-height: 25;
+    -fx-pref-height: 25;
+}
+.text-field:hover{
+    -fx-border-color: #524A7B;
+    border-color: #524A7B;
+    -fx-background-color: #524A7B;
+    background-color: #524A7B;
+}
+.text-field:focused{
+    -fx-border-color: #4e4e4e;
+    border-color: #4e4e4e;
+    -fx-background-color: #1a1a1a;
+    background-color: #1a1a1a;
+}
+
+.button
+{
+    -fx-text-fill: #ffffffff;
+    -fx-background-color : #2F2B43;
+    -fx-background-radius :  30 30 30 30;
+}
+.button:hover
+{
+    -fx-background-color : #524A7B ;
+    -fx-background-radius :  30 30 30 30;
+}
+.button:pressed
+{
+    -fx-background-color : #2F2B43 ;
+    -fx-background-radius :  30 30 30 30;
+}
+.button:selected
+{
+    -fx-background-color : #2F2B43 ;
+    -fx-background-radius :  30 30 30 30;
+}
