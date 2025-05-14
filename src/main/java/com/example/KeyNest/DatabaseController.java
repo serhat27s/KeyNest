@@ -1,30 +1,29 @@
 package com.example.KeyNest;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-
 import com.example.KeyNest.popups.AddAccount;
 import com.example.KeyNest.popups.EditAccount;
 import com.example.KeyNest.popups.RemoveAccount;
-
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Hyperlink;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.*;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.awt.*;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class DatabaseController
 {
@@ -186,40 +185,76 @@ public class DatabaseController
     @FXML
     private void about() throws MalformedURLException
     {
-        Alert alert = new Alert(AlertType.NONE);
-        alert.setTitle("About");
-        alert.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+
+        Stage popup = new Stage ();
+        popup.initModality(Modality.APPLICATION_MODAL);
+        popup.setTitle("About");
+        Image iconpopup = new Image("icon.png");
+        popup.getIcons().add(iconpopup);
 
         Hyperlink link = new Hyperlink("https://github.com/serhat27s");
+            link.setOnAction(e -> {
+                try {
+                    Desktop.getDesktop().browse(new URI(link.getText()));
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            });
         Label label = new Label("Find more of my projects here:" );
-        VBox vb = new VBox(label, link);
 
-        alert.getDialogPane().setContent(vb);
-        alert.getDialogPane().getStylesheets().add(getClass().getResource("/com/example/KeyNest/popups.css").toExternalForm());
-        alert.show();
+        VBox vb = new VBox(label, link);
+        VBox layout= new VBox(7);
+
+        Button button = new Button("Close");
+        button.setOnAction(e -> popup.close());
+
+        layout.getChildren().addAll(vb, button);
+        vb.setAlignment(Pos.CENTER);
+        layout.setAlignment(Pos.CENTER);
+
+        Scene scene = new Scene(layout, 265, 115);
+        scene.getStylesheets().add(getClass().getResource("/com/example/KeyNest/popups.css").toExternalForm());
+
+        popup.setX(660);
+        popup.setY(225);
+        popup.setScene(scene);
+        popup.showAndWait();
     }
 
     @FXML
     private void locateDatabase() throws MalformedURLException
     {
-        Alert alert = new Alert(AlertType.NONE);
-        alert.setTitle("Locate Database");
-        alert.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+        Stage popup = new Stage ();
+        popup.initModality(Modality.APPLICATION_MODAL);
+        popup.setTitle("Database Location");
+        Image iconpopup = new Image("icon.png");
+        popup.getIcons().add(iconpopup);
+
+
+
+        VBox layout= new VBox(7);
 
         Text text1 = new Text("The location of the database is:\n");
         text1.setFill(Color.WHITE);
-
-        // Bold part
         Text text2 = new Text(encryptedDB);
         text2.setFont(Font.font("System", FontWeight.BOLD, 12));
         text2.setFill(Color.WHITE);
-
-        // Combine both strings
         TextFlow textFlow = new TextFlow(text1, text2);
+        textFlow.setTextAlignment(TextAlignment.CENTER);
 
-        alert.getDialogPane().setContent(textFlow);
-        alert.getDialogPane().getStylesheets().add(getClass().getResource("/com/example/KeyNest/popups.css").toExternalForm());
-        alert.show();
+        Button button = new Button("Close");
+        button.setOnAction(e -> popup.close());
+
+        layout.getChildren().addAll(textFlow, button);
+        layout.setAlignment(Pos.CENTER);
+
+        Scene scene = new Scene(layout, 265, 115);
+        scene.getStylesheets().add(getClass().getResource("/com/example/KeyNest/popups.css").toExternalForm());
+
+        popup.setX(660);
+        popup.setY(225);
+        popup.setScene(scene);
+        popup.showAndWait();
     }
 
 }

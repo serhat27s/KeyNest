@@ -1,17 +1,22 @@
 package com.example.KeyNest;
 
-import java.io.File;
-import java.io.IOException;
-
 import com.example.KeyNest.popups.EnterNewPassword;
 import com.example.KeyNest.popups.EnterPassword;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckMenuItem;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
 
 
 public class LoginController
@@ -41,12 +46,29 @@ public class LoginController
         {   //database found
             System.out.println("Database found!");
 
-            Alert alert = new Alert(AlertType.NONE);
-            alert.setTitle("Database found");
-            alert.setContentText("An existing database has been found.\nYou can't create another one!");
-            alert.getDialogPane().getButtonTypes().add(ButtonType.OK);
-            alert.getDialogPane().getStylesheets().add(getClass().getResource("/com/example/KeyNest/popups.css").toExternalForm());
-            alert.showAndWait();
+            Stage popup = new Stage();
+            popup.initModality(Modality.APPLICATION_MODAL);
+            popup.setTitle("Database found");
+            Image iconpopup = new Image("icon.png");
+            popup.getIcons().add(iconpopup);
+
+            VBox layout= new VBox(7);
+
+            Label label = new Label("An existing database has been found.\nYou can't create another one");
+
+            Button button = new Button("Close");
+            button.setOnAction(e -> popup.close());
+
+            layout.getChildren().addAll(label, button);
+            layout.setAlignment(Pos.CENTER);
+
+            Scene scene = new Scene(layout, 265, 115);
+            scene.getStylesheets().add(getClass().getResource("/com/example/KeyNest/popups.css").toExternalForm());
+
+            popup.setX(660);
+            popup.setY(225);
+            popup.setScene(scene);
+            popup.showAndWait();
         }
         else
         {   //create new empty database
@@ -88,13 +110,29 @@ public class LoginController
             {
                 //database not found
                 System.out.println("No database found!");
+                Stage popup = new Stage();
+                popup.initModality(Modality.APPLICATION_MODAL);
+                popup.setTitle("No Database found");
+                Image iconpopup = new Image("icon.png");
+                popup.getIcons().add(iconpopup);
 
-                Alert alert = new Alert(AlertType.NONE);
-                alert.setTitle("No database found!");
-                alert.setContentText("No existing database has been found.\nCreate one now!");
-                alert.getDialogPane().getButtonTypes().add(ButtonType.OK);
-                alert.getDialogPane().getStylesheets().add(getClass().getResource("/com/example/KeyNest/popups.css").toExternalForm());
-                alert.showAndWait();
+                VBox layout= new VBox(7);
+
+                Label label = new Label("No existing database has been found.\nCreate one now!");
+
+                Button button = new Button("Close");
+                button.setOnAction(e -> popup.close());
+
+                layout.getChildren().addAll(label, button);
+                layout.setAlignment(Pos.CENTER);
+
+                Scene scene = new Scene(layout, 275, 115);
+                scene.getStylesheets().add(getClass().getResource("/com/example/KeyNest/popups.css").toExternalForm());
+
+                popup.setX(660);
+                popup.setY(225);
+                popup.setScene(scene);
+                popup.showAndWait();
             }
         }
         catch(Exception e)

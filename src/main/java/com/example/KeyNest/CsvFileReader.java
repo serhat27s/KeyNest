@@ -68,15 +68,11 @@ public class CsvFileReader
         {
             System.err.println("Error in CsvFileReader!");
         }
-        finally
-        {
-            try
-            {
+        finally {
+            try {
                 fileReader.close();
                 csvFileParser.close();
-            }
-            catch(IOException e)
-            {
+            } catch (IOException e) {
                 System.err.println("Error while closing fileReader/csvFileParser!");
             }
         }

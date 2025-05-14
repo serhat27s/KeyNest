@@ -1,7 +1,5 @@
 package com.example.KeyNest.popups;
 
-import java.net.MalformedURLException;
-
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,6 +9,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.net.MalformedURLException;
 
 
 public class RemoveAccount

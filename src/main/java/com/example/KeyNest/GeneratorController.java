@@ -48,28 +48,25 @@ public class GeneratorController {
     private TextField textfield;
 
     @FXML
-    private Tooltip toolStrength;
+    private ProgressBar barstrength;
 
     @FXML
-    private ProgressBar barstrength;
-    @FXML
-    private ToggleGroup dashtoggle;
-    @FXML
     private ToggleButton toggleKM;
+
     @FXML
     public BorderPane borderpane;
 
     //-------------------------------------------
     private void showPopup(String message, TextField textField) {
         Tooltip popup = new Tooltip(message);
-        popup.setOpacity(0.87);
+        popup.setOpacity(0.77);
 
         popup.setAutoHide(true);
         double x = textField.getScene().getWindow().getX() + textField.getLayoutX() + textField.getWidth() + 30; //center
         double y = textField.getScene().getWindow().getY() + textField.getLayoutY() + textField.getHeight() + 160; //center
         popup.show(textField, x, y);
 
-        PauseTransition delay = new PauseTransition(Duration.seconds(2)); // Show a short duration
+        PauseTransition delay = new PauseTransition(Duration.seconds(2)); // Show duration
         delay.setOnFinished(e -> popup.hide());
         delay.play();
     }
@@ -83,7 +80,7 @@ public class GeneratorController {
             clipboard.setContent(content);
             showPopup("Password has been copied!", textfield);
         } else {
-            showPopup("Generate a password first!", textfield);
+            labelPassword.setText("Generate a password first!");
         }
     }
 
@@ -116,9 +113,8 @@ public class GeneratorController {
 
             generatedPassword = generateRandomPassword(passwordLengthInt, characterSet);
             updatePasswordStrength(passwordLengthInt);
-        } catch (NumberFormatException e) {
-            System.out.println(e);
-            showPopup("Please enter a valid number!", textfield);
+        } catch (NumberFormatException e) { // invalid input
+            labelPassword.setText("Please enter a valid number!");
         }
     }
 
@@ -194,11 +190,12 @@ public class GeneratorController {
         AnchorPane view = FXMLLoader.load(getClass().getResource("KeyGenerator.fxml"));
         borderpane.setCenter(view);
     }
-
+    //--------------------------------------------------------------------------------
     public void switchKeyManagerLogin(ActionEvent event) throws IOException {
         AnchorPane view = FXMLLoader.load(getClass().getResource("KeyManagerLogin.fxml"));
         borderpane.setCenter(view);
     }
+    //--------------------------------------------------------------------------------
     public void switchKeyManager(ActionEvent event) throws IOException {
         AnchorPane view = FXMLLoader.load(getClass().getResource("KeyManager.fxml"));
         borderpane.setCenter(view);

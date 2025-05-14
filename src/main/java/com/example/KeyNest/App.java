@@ -4,9 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.scene.image.Image; // icon
-
 
 import java.io.IOException;
 
@@ -18,7 +17,7 @@ public class App extends Application
     @Override
     public void start(Stage stage) throws IOException
     {
-        stage.setTitle("KeyNest ");
+        stage.setTitle("com/example/KeyNest ");
         Image icon = new Image("icon.png");
         stage.getIcons().add(icon);
         App.stage = stage;
@@ -27,14 +26,9 @@ public class App extends Application
         scene = new Scene(root);
         stage.setScene(scene);
         GeneratorController controller = loader.getController();
-        controller.switchKeyGenerator(null); //makes KeyGenerator the "home" screen
+        controller.switchKeyGenerator(null); // needs to be here as no button works if its not reloaded
         stage.setResizable(false);
         stage.show();
-    }
-
-    static void setRoot(String fxml) throws IOException
-    {
-        scene.setRoot(loadFXML(fxml));
     }
 
     public static Parent loadFXML(String fxml) throws IOException

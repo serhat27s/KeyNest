@@ -1,19 +1,19 @@
 package com.example.KeyNest.popups;
 
-import java.net.MalformedURLException;
-
 import com.example.KeyNest.Encryption;
-
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.net.MalformedURLException;
 
 
 
@@ -26,8 +26,9 @@ public class EnterNewPassword
         Stage popupwindow=new Stage();
 
         popupwindow.initModality(Modality.APPLICATION_MODAL);
-        popupwindow.setTitle("Create database");
-
+        popupwindow.setTitle("Create Database");
+        Image iconpopup = new Image("icon.png");
+        popupwindow.getIcons().add(iconpopup);
         Label label = new Label("Enter password to encrypt database:");
         label.setTextAlignment(TextAlignment.CENTER);
         PasswordField passwordField = new PasswordField();
