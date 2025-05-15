@@ -10,6 +10,7 @@ module com.example.KeyNest {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires org.apache.commons.csv;
+    requires java.desktop;
 
     opens com.example.KeyNest to javafx.fxml;
     exports com.example.KeyNest;
