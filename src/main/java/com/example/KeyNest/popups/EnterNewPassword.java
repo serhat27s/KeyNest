@@ -29,15 +29,15 @@ public class EnterNewPassword
         popupwindow.setTitle("Create Database");
         Image iconpopup = new Image("icon.png");
         popupwindow.getIcons().add(iconpopup);
-        Label label = new Label("Enter password to encrypt database:");
+        popupwindow.setResizable(false);
+        Label label = new Label("This password is the only way to access your data.\n It won’t be saved – don’t forget it!");
         label.setTextAlignment(TextAlignment.CENTER);
         PasswordField passwordField = new PasswordField();
+        passwordField.setPromptText("Master password");
         passwordField.setMaxWidth(250);
 
         Region region = new Region();
-
-        Button button = new Button("Confirm");
-
+        Button button = new Button("Confirm Password");
         button.setOnAction(e ->
         {
             if(!passwordField.getText().isBlank())
@@ -49,21 +49,17 @@ public class EnterNewPassword
                 popupwindow.close();
             }
         });
-
         button.setDefaultButton(true);
+        popupwindow.setOnShown(e -> button.requestFocus());
 
         VBox layout= new VBox(7);
-
         layout.getChildren().addAll(label, passwordField, region, button);
-
         layout.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(layout, 300, 150);
-
         scene.getStylesheets().add(getClass().getResource("/com/example/KeyNest/popups.css").toExternalForm());
 
         popupwindow.setScene(scene);
-
         popupwindow.showAndWait();
 
         return isPasswordIn;
