@@ -17,7 +17,7 @@ public class App extends Application
     @Override
     public void start(Stage stage) throws IOException
     {
-        stage.setTitle("com/example/KeyNest ");
+        stage.setTitle("KeyNest");
         Image icon = new Image("icon.png");
         stage.getIcons().add(icon);
         App.stage = stage;
