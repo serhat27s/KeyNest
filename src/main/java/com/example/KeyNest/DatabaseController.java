@@ -82,7 +82,6 @@ public class DatabaseController
     {
         if(showPw)
         {
-            //hide password
             passwordColumn.setVisible(false);
             showPasswordCheckbox.setSelected(false);
             showPw = false;
@@ -90,7 +89,6 @@ public class DatabaseController
         }
         else
         {
-            //show password
             passwordColumn.setVisible(true);
             showPasswordCheckbox.setSelected(true);
             showPw = true;
@@ -258,3 +256,4 @@ public class DatabaseController
     }
 
 }
+
