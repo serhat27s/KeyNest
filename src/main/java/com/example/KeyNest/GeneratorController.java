@@ -56,7 +56,7 @@ public class GeneratorController {
     @FXML
     public BorderPane borderpane;
 
-    //-------------------------------------------
+    
     private void showPopup(String message, TextField textField) {
         Tooltip popup = new Tooltip(message);
         popup.setOpacity(0.77);
@@ -123,19 +123,19 @@ public class GeneratorController {
         if (isUppercase) {
             characterSet.append(uppercase);
         }
-        //---
+        
         if (isLowercase) {
             characterSet.append(lowercase);
         }
-        //---
+        
         if (isNumbers) {
             characterSet.append(numbers);
         }
-        //---
+        
         if (isSpecialCharacters) {
             characterSet.append(specialCharacters);
         }
-        //---
+        
         return characterSet.toString();
     }
 
@@ -164,7 +164,7 @@ public class GeneratorController {
             timeline.getKeyFrames().add(keyFrame);
         }
         timeline.play();
-        //---
+        
         return password.toString();
     }
 
@@ -185,21 +185,21 @@ public class GeneratorController {
         }
         labelStrength.setText(strength + " Password");
     }
-    // scene changes ------------------------------------------------------------------
+    // scene changes:
     public void switchKeyGenerator(ActionEvent event) throws IOException {
         AnchorPane view = FXMLLoader.load(getClass().getResource("KeyGenerator.fxml"));
         borderpane.setCenter(view);
     }
-    //--------------------------------------------------------------------------------
+    
     public void switchKeyManagerLogin(ActionEvent event) throws IOException {
         AnchorPane view = FXMLLoader.load(getClass().getResource("KeyManagerLogin.fxml"));
         borderpane.setCenter(view);
     }
-    //--------------------------------------------------------------------------------
+    
     public void switchKeyManager(ActionEvent event) throws IOException {
         AnchorPane view = FXMLLoader.load(getClass().getResource("KeyManager.fxml"));
         borderpane.setCenter(view);
-        toggleKM.setSelected(true); // needed as it bugs and auto-selects KeyGenerator-Button for some reason
+        toggleKM.setSelected(true); // needed as without it, every button becomes the Generator-Button
     }
 }
 
