@@ -43,7 +43,7 @@ public class LoginController
     {
         File f = new File(encryptedDB);
         if(f.exists() && !f.isDirectory())
-        {   //database found
+        {   
             System.out.println("Database found!");
 
             Stage popup = new Stage();
@@ -108,7 +108,6 @@ public class LoginController
             }
             else
             {
-                //database not found
                 System.out.println("No database found!");
                 Stage popup = new Stage();
                 popup.initModality(Modality.APPLICATION_MODAL);
@@ -141,4 +140,5 @@ public class LoginController
             isDatabaseCreated.setText("The password is incorrect.\nTry again!");
         }
     }
+
 }
